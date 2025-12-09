@@ -1,16 +1,17 @@
-import express, { Request, Response } from "express";
+import express from "express";
 import cors from "cors";
+import { errorHandler } from "./middleware/errorhandler.middleware";
 
-// routes
-import checkRoutes from "./routes/check.routes";
-import { errorHandler } from "./middleware/error.middleware";
+// routes import
+import healthRoutes from "./routes/health.routes";
 
 const app = express();
 
-app.use(cors());
 app.use(express.json());
+app.use(cors());
 
-app.use("/api/check", checkRoutes);
+// routes
+app.use("/api/check", healthRoutes);
 
 app.use(errorHandler);
 export default app;

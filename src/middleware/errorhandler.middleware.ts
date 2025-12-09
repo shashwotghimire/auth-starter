@@ -10,7 +10,7 @@ export const errorHandler = (
   const errorMessage = err.message || "internal server error";
   return res.status(statusCode).json({
     success: false,
-    error: { errorPath: req.path, method: req.method },
-    errorMessage: errorMessage,
+    error: errorMessage,
+    details: { path: req.path, method: req.method },
   });
 };

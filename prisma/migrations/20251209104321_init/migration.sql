@@ -1,7 +1,7 @@
 -- CreateTable
 CREATE TABLE "User" (
     "id" TEXT NOT NULL,
-    "name" TEXT,
+    "username" TEXT,
     "email" TEXT NOT NULL,
     "password" TEXT,
     "emailVerified" BOOLEAN NOT NULL DEFAULT false,
@@ -17,9 +17,9 @@ CREATE TABLE "User" (
 CREATE TABLE "EmailVerificationToken" (
     "id" TEXT NOT NULL,
     "token" TEXT NOT NULL,
-    "userId" TEXT NOT NULL,
     "expiresAt" TIMESTAMP(3) NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "userId" TEXT NOT NULL,
 
     CONSTRAINT "EmailVerificationToken_pkey" PRIMARY KEY ("id")
 );
@@ -28,10 +28,10 @@ CREATE TABLE "EmailVerificationToken" (
 CREATE TABLE "PasswordResetToken" (
     "id" TEXT NOT NULL,
     "token" TEXT NOT NULL,
-    "userId" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "expiresAt" TIMESTAMP(3) NOT NULL,
     "used" BOOLEAN NOT NULL DEFAULT false,
+    "userId" TEXT NOT NULL,
 
     CONSTRAINT "PasswordResetToken_pkey" PRIMARY KEY ("id")
 );
